@@ -2,7 +2,7 @@
 
 一個透過 GitHub Actions + Docker + KVM/QEMU + Windows 11 LTSC + ngrok 建立的拋棄式雲端 Windows 電腦。
 
-本專案參考、使用、結合了dockurr/windows的軟體，在此感謝dockurr
+本專案參考、使用、結合了dockurr/windows的軟體，在此感謝dockurr。
 
 每次啟動都會建立一個新的 GitHub-hosted Ubuntu runner，並在其中自動啟動 Windows 11 LTSC 虛擬機。
 
@@ -657,11 +657,19 @@ Start Docker containers
 - 整合到其他專案
 - 在任何國家或地區使用
 
-但必須保留原本的著作權聲明及授權條款。
+
 
 «⚠️ 本專案使用的第三方軟體、Docker image、Windows 及其他元件，仍然受到各自的授權條款限制。MIT License 僅適用於本專案本身的程式碼，不會改變第三方軟體的授權條件。»
 
 Copyright (c) 2026 syuankai
 popcat1020622@gmail.com
+
+商標與第三方權利聲明
+
+- GitHub、Windows、Docker、Ubuntu、ngrok、QEMU、KVM 等名稱、商標及相關標誌均屬其各自權利人所有。
+- 本專案與上述公司、組織或產品之間沒有任何官方隸屬、贊助、認證或背書關係，除非另有明確說明。
+- 本專案僅使用相關軟體及服務所提供的公開功能，不主張擁有任何第三方商標、名稱、標誌或其他智慧財產權。
+- 第三方軟體、服務及其相關內容仍受其各自的授權條款、服務條款及智慧財產權規範約束；本專案的授權條款不會取代或擴張任何第三方授權。
+- 使用者應自行確認其使用方式符合相關服務的授權條款、服務條款及適用法律。
 
 詳見 Repository 中的 "LICENSE" 檔案。
