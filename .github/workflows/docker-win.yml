@@ -1,5 +1,5 @@
 
-name: Start Dockerwindows
+name: Start windows
 
 on:
   workflow_dispatch:
@@ -31,6 +31,41 @@ jobs:
       - name: Check Docker
         run: |
           sudo docker ps
+
+      - name: Install ngrok
+        run: |
+          curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+            | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+
+          echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
+            | sudo tee /etc/apt/sources.list.d/ngrok.list
+
+          sudo apt update
+          sudo apt install -y ngrok
+
+      - name: Configure and Start ngrok
+        env:
+          NGROK_USERKEY: ${{ secrets.ngrok_userkey }}
+        run: |
+          if [ -z "$NGROK_USERKEY" ]; then
+            echo "Error: ngrok_userkey secret is not set!"
+            exit 1
+          fi
+
+          ngrok config add-authtoken "$NGROK_USERKEY"
+
+          nohup ngrok http 8006 > ngrok.log 2>&1 &
+
+          echo "Waiting for ngrok to start..."
+          sleep 5
+
+          if ! pgrep -x ngrok >/dev/null; then
+            echo "ngrok failed to start:"
+            cat ngrok.log
+            exit 1
+          fi
+
+          echo "ngrok is running!"
 
       - name: Ready
         run: |
