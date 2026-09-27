@@ -1,5 +1,5 @@
 
-name: Start windows
+name: Start Dockerwindows
 
 on:
   workflow_dispatch:
@@ -10,12 +10,15 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
 
     steps:
       - name: Install Docker
         run: |
           sudo apt-get update
-          sudo apt-get install -y docker.io docker-compose
+          sudo apt-get install -y curl
+          curl -fsSL https://get.docker.com -o get-docker.sh
+          sudo sh get-docker.sh
 
       - name: Download Docker Compose file
         run: |
@@ -23,12 +26,16 @@ jobs:
 
       - name: Start Docker containers
         run: |
-          sudo docker-compose -f docker-compose-win.yml up -d
+          sudo docker compose -f docker-compose-win.yml up -d
+
+      - name: Check Docker
+        run: |
+          sudo docker ps
 
       - name: Ready
         run: |
           echo "The computer is ready!"
-      
+
       - name: Keep Actions Running for 4 Hours
         run: |
           echo "Keeping the computer running for 4 hours..."
