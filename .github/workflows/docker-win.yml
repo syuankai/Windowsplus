@@ -1,0 +1,31 @@
+
+name: Start windows
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io docker-compose
+
+      - name: Download Docker Compose file
+        run: |
+          curl -fLO https://raw.githubusercontent.com/uuuu987654a/Windows/refs/heads/main/docker-compose-win.yml
+
+      - name: Start Docker containers
+        run: |
+          sudo docker-compose -f docker-compose-win.yml up -d
+
+      - name: Ready
+        run: |
+          echo "The computer is ready!"
+          
