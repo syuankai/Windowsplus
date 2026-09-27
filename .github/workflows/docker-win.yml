@@ -28,4 +28,10 @@ jobs:
       - name: Ready
         run: |
           echo "The computer is ready!"
+      
+      - name: Keep Actions Running for 4 Hours
+        run: |
+          echo "Keeping the computer running for 4 hours..."
+          sleep 14400
+          echo "4 hours completed!"
           
