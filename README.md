@@ -116,6 +116,18 @@ DISK_SIZE: "100G"
 
 «⚠️ "DISK_SIZE" 是 Windows 虛擬磁碟的配置大小，不代表 GitHub runner 一定具有相同大小的可用實體磁碟空間。»
 
+修改軟體配置
+
+找到docker-compose-win.yml
+
+裡面有
+
+- USERNAME
+
+可以做修改，如果有其他變數的需求可前往dockur/windows來源倉庫
+
+*https://github.com/dockur/windows*
+
 ---
 
 📋 使用前準備
