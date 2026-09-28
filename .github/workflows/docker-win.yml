@@ -1,11 +1,8 @@
 
-name: Start windows
+name: Windows LTSC 24H2
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 jobs:
   setup:
